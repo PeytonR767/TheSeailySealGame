@@ -126,24 +126,30 @@ function moveSeal(key) {
 
 function moveOrcas() {
     for (let o of orcas) {
-        let dx = Math.sign(seal.x - o.x);
-        let dy = Math.sign(seal.y - o.y);
-
-        let options = [
-            { x: o.x + dx, y: o.y },
-            { x: o.x, y: o.y + dy },
-            { x: o.x - dx, y: o.y },
-            { x: o.x, y: o.y - dy }
+        // Random directions
+        const dirs = [
+            { x: 1, y: 0 },
+            { x: -1, y: 0 },
+            { x: 0, y: 1 },
+            { x: 0, y: -1 }
         ];
 
-        for (let opt of options) {
-            if (!isWall(opt.x, opt.y)) {
-                o.x = opt.x;
-                o.y = opt.y;
+        // Shuffle directions
+        dirs.sort(() => Math.random() - 0.5);
+
+        // Try each direction until one works
+        for (let d of dirs) {
+            let nx = o.x + d.x;
+            let ny = o.y + d.y;
+
+            if (!isWall(nx, ny)) {
+                o.x = nx;
+                o.y = ny;
                 break;
             }
         }
 
+        // Collision check
         if (o.x === seal.x && o.y === seal.y) {
             gameOver = true;
         }
@@ -260,5 +266,6 @@ function gameLoop() {
 }
 
 gameLoop();
+
 
 
