@@ -196,16 +196,53 @@ for (let f of fish) {
     ctx.arc(seal.x * TILE + 20, seal.y * TILE + 20, 16, 0, Math.PI * 2);
     ctx.fill();
 
-    // Draw orcas
-    for (let o of orcas) {
-        ctx.fillStyle = COLORS.orca;
-        ctx.fillRect(o.x * TILE + 5, o.y * TILE + 5, 30, 30);
+    // Draw orcas (orca shape)
+for (let o of orcas) {
+    let cx = o.x * TILE + 20;
+    let cy = o.y * TILE + 20;
 
-        ctx.fillStyle = COLORS.orcaEye;
-        ctx.beginPath();
-        ctx.arc(o.x * TILE + 28, o.y * TILE + 12, 4, 0, Math.PI * 2);
-        ctx.fill();
-    }
+    // Body
+    ctx.fillStyle = COLORS.orca;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, 18, 12, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // White belly patch
+    ctx.fillStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.ellipse(cx + 4, cy + 4, 10, 6, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Dorsal fin
+    ctx.fillStyle = COLORS.orca;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - 14);
+    ctx.lineTo(cx + 6, cy - 4);
+    ctx.lineTo(cx - 6, cy - 4);
+    ctx.closePath();
+    ctx.fill();
+
+    // Tail
+    ctx.beginPath();
+    ctx.moveTo(cx - 18, cy);
+    ctx.lineTo(cx - 26, cy - 6);
+    ctx.lineTo(cx - 26, cy + 6);
+    ctx.closePath();
+    ctx.fill();
+
+    // White eye patch
+    ctx.fillStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.ellipse(cx + 10, cy - 4, 4, 3, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Eye
+    ctx.fillStyle = "#000000";
+    ctx.beginPath();
+    ctx.arc(cx + 11, cy - 4, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+}
+
 
     // Score
     ctx.fillStyle = "white";
@@ -223,4 +260,5 @@ function gameLoop() {
 }
 
 gameLoop();
+
 
