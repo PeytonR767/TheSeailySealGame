@@ -1,5 +1,5 @@
 body {
-    background: #0a1428;
+    background: #4da6ff; /* bright ocean blue */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,5 +11,5 @@ body {
 
 canvas {
     border: 4px solid #1e3a5f;
-    background: #0a1428;
+    background: #87cefa; /* lighter water color */
 }
