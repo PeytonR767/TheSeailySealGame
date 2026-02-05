@@ -163,14 +163,32 @@ function draw() {
         }
     }
 
-    // Draw fish
-    for (let f of fish) {
-        let [x, y] = f.split(",").map(Number);
-        ctx.fillStyle = COLORS.fish;
-        ctx.beginPath();
-        ctx.arc(x * TILE + 20, y * TILE + 20, 10, 0, Math.PI * 2);
-        ctx.fill();
-    }
+// Draw fish (actual fish shape)
+for (let f of fish) {
+    let [x, y] = f.split(",").map(Number);
+    let cx = x * TILE + 20;
+    let cy = y * TILE + 20;
+
+    // Body
+    ctx.fillStyle = COLORS.fish;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, 14, 8, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Tail
+    ctx.beginPath();
+    ctx.moveTo(cx - 14, cy);
+    ctx.lineTo(cx - 24, cy - 6);
+    ctx.lineTo(cx - 24, cy + 6);
+    ctx.closePath();
+    ctx.fill();
+
+    // Eye
+    ctx.fillStyle = "#000";
+    ctx.beginPath();
+    ctx.arc(cx + 6, cy - 2, 2, 0, Math.PI * 2);
+    ctx.fill();
+}
 
     // Draw seal
     ctx.fillStyle = COLORS.seal;
@@ -205,3 +223,4 @@ function gameLoop() {
 }
 
 gameLoop();
+
