@@ -1,11 +1,20 @@
 document.getElementById("start-btn").addEventListener("click", () => {
-  document.getElementById("start-screen").style.display = "none";
+  const screen = document.getElementById("start-screen");
+  screen.style.display = "none"; // removes the screen
   startGame();
 });
 
 function startGame() {
   console.log("Game started!");
-  // Your game loop or initialization code goes here
+
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Example: draw something so you know it works
+  ctx.fillStyle = "black";
+  ctx.fillRect(50, 50, 100, 100);
+
+  // Your real game loop goes here
 }
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
@@ -275,6 +284,7 @@ function gameLoop() {
 }
 
 gameLoop();
+
 
 
 
