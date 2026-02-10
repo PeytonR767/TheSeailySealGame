@@ -1,3 +1,12 @@
+document.getElementById("start-btn").addEventListener("click", () => {
+  document.getElementById("start-screen").style.display = "none";
+  startGame();
+});
+
+function startGame() {
+  console.log("Game started!");
+  // Your game loop or initialization code goes here
+}
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
@@ -266,6 +275,7 @@ function gameLoop() {
 }
 
 gameLoop();
+
 
 
 
